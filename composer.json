@@ -11,14 +11,14 @@
     ],
     "homepage":"https://github.com/orainteractive/cakephp3-email-template",
     "license":"MIT",
-    "authors":[
+    "authors": [
         {
             "name":"Andre Sugai",
             "role":"Author",
             "homepage":"http://andresugai.com/"
         }
     ],
-    "require":{
+    "require": {
         "cakephp/cakephp": "~3.0",
         "tijsverkoyen/css-to-inline-styles": "^1.5@dev"
     },
@@ -32,7 +32,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Ora\\Email\\Test\\": "tests",
+            "Ora\\Email\\Test\\": "tests"
         }
     }
 }
