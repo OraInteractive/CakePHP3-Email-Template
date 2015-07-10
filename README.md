@@ -65,7 +65,6 @@ In your app, use the Email class:
     
     $email = new Email('default');
     $email->to($user->email)
-        ->subject($title)
-        ->viewVars(['title' => 'Welcome to my app!'])
+        ->subject('Welcome to my app!')
         ->template('welcome')
         ->send();
