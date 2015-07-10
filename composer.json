@@ -1,0 +1,38 @@
+{
+    "name":"orainteractive/cakephp3-email-template",
+    "description":"Email Template for CakePHP3 based on HTML Email Layouts by MailChimp",
+    "type":"cakephp-plugin",
+    "keywords":[
+        "cakephp",
+        "email",
+        "template",
+        "responsive",
+        "mailchimp"
+    ],
+    "homepage":"https://github.com/orainteractive/cakephp3-email-template",
+    "license":"MIT",
+    "authors":[
+        {
+            "name":"Andre Sugai",
+            "role":"Author",
+            "homepage":"http://andresugai.com/"
+        }
+    ],
+    "require":{
+        "cakephp/cakephp": "~3.0",
+        "tijsverkoyen/css-to-inline-styles": "^1.5@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.33"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ora\\Email\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ora\\Email\\Test\\": "tests",
+        }
+    }
+}
