@@ -42,7 +42,7 @@ The following properties can be used to modify the HTML prior to sending:
 
 Property | Default | Description
 -------|---------|------------
-inline |true|Inlines CSS
+inline |true|Inlines CSS using tijsverkoyen/css-to-inline-styles
 
 The following properties can be used in the template configuration:
 
