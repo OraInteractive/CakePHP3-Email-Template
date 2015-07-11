@@ -3,6 +3,8 @@ namespace Ora\Email\Network\Email;
 
 use Cake\Network\Email\Email as CakeEmail;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
+use \Minify_HTML;
+use \CssMin;
 
 class Email extends CakeEmail
 {
@@ -19,16 +21,23 @@ class Email extends CakeEmail
         $rendered = parent::_renderTemplates($content);
         $profile = $this->profile();
         
-        if (
-            (!isset($profile['inline']) || $profile['inline'] === true)
-            && !empty($rendered['html'])
-        ) {
-            $html = new CssToInlineStyles();
-            $html->setHtml($rendered['html']);
-            $html->setUseInlineStylesBlock();
-            $rendered['html'] = $html->convert();
+        if (!empty($rendered['html'])) {
+            if (!empty($profile['inline']) && $profile['inline'] === true) {
+                $html = new CssToInlineStyles();
+                $html->setHtml($rendered['html']);
+                $html->setUseInlineStylesBlock();
+                $rendered['html'] = $html->convert();
+            }
+            
+            if (!empty($profile['clean']) && $profile['clean'] === true) {
+                $rendered['html'] = preg_replace('/<!--(.|\s)*?-->/', '', $rendered['html']);
+            }
+            
+            if (!empty($profile['minify']) && $profile['minify'] === true) {
+                $rendered['html'] = Minify_HTML::minify($rendered['html'], ['cssMinifier' => 'CssMin::minify']);
+            }
         }
-        
+
         return $rendered;
     }
 }
