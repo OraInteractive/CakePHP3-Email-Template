@@ -1,7 +1,6 @@
 <?php
 namespace Ora\Email\Network\Email;
 
-use Ora\Email\Network\Email\MailTransport;
 use Cake\Network\Email\Email as CakeEmail;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
@@ -13,31 +12,23 @@ class Email extends CakeEmail
         
         $profile = $this->profile();
         $this->viewVars($profile['template']);
-        $this->transport(new MailTransport());
     }
     
-    public function inlineCss()
+    protected function _renderTemplates($content)
     {
-        $message = $this->_message;
+        $rendered = parent::_renderTemplates($content);
+        $profile = $this->profile();
         
-        $i = 0;
-        foreach ($message as $key => $row) {
-            if (stristr($row, $this->_boundary)) {
-                $i++;
-            }
-            
-            if ($i == 2) {
-                break;
-            }
+        if (
+            (!isset($profile['inline']) || $profile['inline'] === true)
+            && !empty($rendered['html'])
+        ) {
+            $html = new CssToInlineStyles();
+            $html->setHtml($rendered['html']);
+            $html->setUseInlineStylesBlock();
+            $rendered['html'] = $html->convert();
         }
         
-        $split = array_slice($message, 0, $key + 4);
-
-        $html = new CssToInlineStyles();
-        $html->setHtml($this->message('html'));
-        $html->setUseInlineStylesBlock();
-        $inline = $html->convert();
-        
-        $this->_message = array_merge($split, explode(PHP_EOL, $inline), ['--'.$this->_boundary.'--', '']);
+        return $rendered;
     }
 }
