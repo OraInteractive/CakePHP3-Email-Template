@@ -23,6 +23,8 @@ Update your email configuration in `config/app.php`, example shows `default` con
             'layout' => 'Ora/Email.default',
             'emailFormat' => 'both',
             'inline' => true,
+            'clean' => true,
+            'minify' => true,
             'template' => [
                 'company' => 'Ora Interactive LLC',
                 'fontColor' => '#101010',
