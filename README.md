@@ -20,23 +20,30 @@ Update your email configuration in `config/app.php`, example shows `default` con
     	'default' => [
     		'transport' => 'default',
     		'from' => 'you@localhost',
+            'charset' => 'utf-8',
+            'headerCharset' => 'utf-8',
             'layout' => 'Ora/Email.default',
             'emailFormat' => 'both',
-            'inline' => true,
-            'clean' => true,
-            'minify' => true,
-            'template' => [
-                'company' => 'Ora Interactive LLC',
-                'fontColor' => '#101010',
-                'backgroundColor' => '#f8bb2a',
-                'foregroundColor' => '#f8f8f8',
-                'logo' => 'https://s3.amazonaws.com/assets.orainteractive.com/email/logo.png',
-                'url' => 'http://orainteractive.com',
-                'facebook' => 'http://facebook.com/orainteractive',
-                'twitter' => 'http://twitter.com/orainteractive',
+            'helpers' => [
+                'Ora/Email.Email' => [
+                    'modifiers' => [
+                        'inline' => true,
+                        'clean' => true,
+                    ],
+                    'template' => [
+                        'company' => 'My Company LLC',
+                        'fontColor' => '#000000',
+                        'backgroundColor' => '#FFFFFF',
+                        'foregroundColor' => '#CECECE',
+                        'logo' => 'https://s3.amazonaws.com/assets.myapp.com/email/logo.png',
+                        'homeLink' => 'http://myapp.com',
+                        'facebookLink' => 'http://facebook.com/myapp',
+                        'twitterLink' => 'http://twitter.com/myapp',
+                    ],
+                ],
             ],
-    	]
-    ]
+    	],
+    ],
 
 ## Documentation
 
@@ -44,31 +51,30 @@ The following properties can be used to modify the HTML prior to sending:
 
 Property | Default | Description
 -------|---------|------------
-inline |false|Inlines CSS using tijsverkoyen/css-to-inline-styles
-clean |false|Remove HTML comments
-minify |false|Minify CSS and HTML
+clean | false | Remove HTML comments
+inline | false | Inlines CSS using tijsverkoyen/css-to-inline-styles
 
 The following properties can be used in the template configuration:
 
 Property | Default | Description
 -------|---------|------------
-company | |Name of the company (ex. Ora Interactive LLC)
-fontColor |#000000|Fond color for the email
-backgroundColor |#FFFFFF|Background color for email
-foregroundColor |#FFFFFF|Foreground color for email
-logo | |Full path URL for logo
-url | |URL of app homepage
-facebook | |Facebook URL for app
-twitter | |Twitter URL for app
+backgroundColor | #FFFFFF | Background color for email
+company | | Name of the company (ex. Ora Interactive LLC)
+facebookLink | | Facebook URL for app
+fontColor | #000000 | Fond color for the email
+foregroundColor | #FFFFFF | Foreground color for email
+homeLink | | URL of app homepage
+logo | | Full path URL for logo
+twitterLink | | Twitter URL for app
 
 ## Usage
 
-In your app, use the Email class:
+In your app, send Emails as normal:
 
-    use Ora\Email\Network\Email\Email;
-    
+    use Cake\Network\Email\Email;
+    ...
     $email = new Email('default');
     $email->to($user->email)
         ->subject('Welcome to my app!')
         ->template('welcome')
-        ->send();
+        ->send('Hope you enjoy using my app.');
