@@ -92,10 +92,10 @@ class EmailHelper extends Helper
     
     public function clean($content, $config)
     {
-        $htmlRegex = !empty($config['htmlRegex']) ? $config['regex'] : '/<!--(.|\s)*?-->/';
+        $htmlRegex = !empty($config['htmlRegex']) ? $config['htmlRegex'] : '/<!--(.|\s)*?-->/';
         $content = preg_replace($htmlRegex, '', $content);
         
-        $cssRegex = !empty($config['cssRegex']) ? $config['regex'] : '!/\*[^*]*\*+([^/][^*]*\*+)*/!';
+        $cssRegex = !empty($config['cssRegex']) ? $config['cssRegex'] : '!/\*[^*]*\*+([^/][^*]*\*+)*/!';
         $content = preg_replace($cssRegex, '' , $content);
         
         return $content;
