@@ -51,7 +51,7 @@ The following properties can be used to modify the HTML prior to sending:
 
 Property | Default | Description
 -------|---------|------------
-clean | false | Remove HTML comments
+clean | false | Remove HTML and CSS comments
 inline | false | Inlines CSS using tijsverkoyen/css-to-inline-styles
 
 The following properties can be used in the template configuration:
