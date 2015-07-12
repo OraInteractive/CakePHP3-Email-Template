@@ -6,7 +6,7 @@
 
 ## About
 
-Email Template for CakePHP3 is based on [HTML Email Layouts by MailChimp](https://github.com/mailchimp/Email-Blueprints).
+Email Template for CakePHP3 is based on [HTML Email Layouts by MailChimp](https://github.com/mailchimp/Email-Blueprints) and [Gourmet/Email](https://github.com/gourmet/email).
 
 Specifically, using a modified version of the [Base Boxed Basic Query](https://github.com/mailchimp/email-blueprints/blob/master/responsive-templates/base_boxed_basic_query.html) resposive template.
 
