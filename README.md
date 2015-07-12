@@ -49,23 +49,25 @@ Update your email configuration in `config/app.php`, example shows `default` con
 
 The following properties can be used to modify the HTML prior to sending:
 
-Property | Default | Description
--------|---------|------------
-clean | false | Removes HTML and CSS comments
-inline | false | Inlines CSS using [tijsverkoyen/css-to-inline-styles](https://github.com/tijsverkoyen/CssToInlineStyles)
+| Property | Default | Description                   |
+| -------- | ------- | ------------                  |
+| clean    | false   | Removes HTML and CSS comments |
+| inline   | false   | Inlines CSS                   |
+
+Inline CSS uses [tijsverkoyen/css-to-inline-styles](https://github.com/tijsverkoyen/CssToInlineStyles)
 
 The following properties can be used in the template configuration:
 
-Property | Default | Description
--------|---------|------------
-backgroundColor | #FFFFFF | Background color for email
-company | | Name of the company (ex. Ora Interactive LLC)
-facebookLink | | Facebook URL for app
-fontColor | #000000 | Fond color for the email
-foregroundColor | #FFFFFF | Foreground color for email
-homeLink | | URL of app homepage
-logo | | Full path URL for logo
-twitterLink | | Twitter URL for app
+| Property        | Default | Description                                   |
+| ----------------| ------- | --------------------------------------------- |
+| backgroundColor | #FFFFFF | Background color for email                    |
+| company         |         | Name of the company (ex. Ora Interactive LLC) |
+| facebookLink    |         | Facebook URL for app                          |
+| fontColor       | #000000 | Fond color for the email                      |
+| foregroundColor | #FFFFFF | Foreground color for email                    |
+| homeLink        |         | URL of app homepage                           |
+| logo            |         | Full path URL for logo                        |
+| twitterLink     |         | Twitter URL for app                           |
 
 ## Usage
 
