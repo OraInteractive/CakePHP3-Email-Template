@@ -162,7 +162,7 @@ class EmailHelperTest extends TestCase
         
         $dom = new DOMDocument;
         $dom->loadHTML($logoImg);
-        $elem = $dom->getElementsByTagName('img')[0];
+        $elem = $dom->getElementsByTagName('img')->item(0);
         
         $this->assertEquals($logo, $elem->getAttribute('src'));
     }
@@ -174,7 +174,7 @@ class EmailHelperTest extends TestCase
 
         $dom = new DOMDocument;
         $dom->loadHTML($homeLink);
-        $elem = $dom->getElementsByTagName('a')[0];
+        $elem = $dom->getElementsByTagName('a')->item(0);
         
         $this->assertEquals($link, $elem->getAttribute('href'));
         $this->assertEquals($link, $elem->nodeValue);
@@ -187,8 +187,7 @@ class EmailHelperTest extends TestCase
 
         $dom = new DOMDocument;
         @$dom->loadHTML($facebookLink);
-        $elem = $dom->getElementsByTagName('a')[0];
-        $elemSvg = $dom->getElementsByTagName('svg')[0];
+        $elem = $dom->getElementsByTagName('a')->item(0);
 
         $this->assertEquals($link, $elem->getAttribute('href'));
         $this->assertEquals(' Facebook', $elem->nodeValue);
@@ -201,8 +200,7 @@ class EmailHelperTest extends TestCase
 
         $dom = new DOMDocument;
         @$dom->loadHTML($twitterLink);
-        $elem = $dom->getElementsByTagName('a')[0];
-        $svgElem = $dom->getElementsByTagName('svg')[0];
+        $elem = $dom->getElementsByTagName('a')->item(0);
         
         $this->assertEquals($link, $elem->getAttribute('href'));
         $this->assertEquals(' Twitter', $elem->nodeValue);
