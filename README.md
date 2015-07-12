@@ -1,5 +1,6 @@
 # CakePHP3-Email-Template
 
+[![Build Status](https://travis-ci.org/OraInteractive/CakePHP3-Email-Template.svg?branch=develop)](https://travis-ci.org/OraInteractive/CakePHP3-Email-Template)
 [![Latest Stable Version](https://poser.pugx.org/orainteractive/cakephp3-email-template/v/stable)](https://packagist.org/packages/orainteractive/cakephp3-email-template)
 [![License](https://poser.pugx.org/orainteractive/cakephp3-email-template/license)](https://packagist.org/packages/orainteractive/cakephp3-email-template)
 [![Total Downloads](https://poser.pugx.org/orainteractive/cakephp3-email-template/downloads)](https://packagist.org/packages/orainteractive/cakephp3-email-template)
