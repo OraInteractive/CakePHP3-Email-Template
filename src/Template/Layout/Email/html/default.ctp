@@ -42,7 +42,7 @@ if (!empty($facebook)) {
 <path id=\"XMLID_2_\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"$fontColor\" d=\"M18,0.2C8.1,0.2,0,8.2,0,18s8.1,17.8,18,17.8
 	c9.9,0,18-8,18-17.8S27.9,0.2,18,0.2z M21.8,18h-2.4v8.6h-3.6V18h-1.8v-3h1.8v-1.8c0-2.4,1-3.9,4-3.9h2.4v3h-1.5
 	c-1.1,0-1.2,0.4-1.2,1.2l0,1.5h2.8L21.8,18z\"/>
-</svg></a>");
+</svg> Facebook</a>");
 } else {
     $this->assign('facebookLink', '');
 }
@@ -56,7 +56,7 @@ if (!empty($twitter)) {
 	c-2-0.4-3.6-2.2-3.6-4.3c0,0,0,0,0-0.1c0.6,0.3,1.3,0.5,2,0.5c-1.2-0.8-2-2.1-2-3.6c0-0.8,0.2-1.6,0.6-2.2c2.2,2.6,5.5,4.4,9.1,4.6
 	c-0.1-0.3-0.1-0.7-0.1-1c0-2.4,2-4.4,4.4-4.4c1.3,0,2.4,0.5,3.2,1.4c1-0.2,2-0.6,2.8-1.1c-0.3,1-1,1.9-1.9,2.4
 	c0.9-0.1,1.8-0.3,2.5-0.7C28.2,12.5,27.5,13.2,26.6,13.9z\"/>
-</svg></a>");
+</svg> Twitter</a>");
 } else {
     $this->assign('twitterLink', '');
 }
@@ -349,7 +349,7 @@ if (!empty($logo)) {
 			* @tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
 			*/
 			.footerContent a:link, .footerContent a:visited, /* Yahoo! Mail Override */ .footerContent a .yshortcuts, .footerContent a span /* Yahoo! Mail Override */{
-                /*@editable*/ font-size:16px;
+                /*@editable*/ font-size:12px;
 				/*@editable*/ color:<?php echo $this->fetch('fontColor'); ?>;
 				/*@editable*/ font-weight:normal;
 				/*@editable*/ text-decoration:none;
@@ -358,19 +358,23 @@ if (!empty($logo)) {
             .footerContent.socialLinks{
                 padding-top:0;
                 text-align:right;
+                height:30px;
             }
             
             .footerContent.socialLinks a{
                 float: right;
-                margin-left: 5px;
+                margin-left:5px;
             }
             
             .footerContent.socialLinks svg{
                 width:20px;
+                position:relative;
+                top:5px;
             }
             
             .footerContent.companyName{
                 padding-top:0;
+                height:30px;
             }
 
 			/* /\/\/\/\/\/\/\/\/ MOBILE STYLES /\/\/\/\/\/\/\/\/ */
@@ -403,7 +407,7 @@ if (!empty($logo)) {
 				* @tip Make the first-level headings larger in size for better readability on small screens.
 				*/
 				h1{
-					/*@editable*/ font-size:24px !important;
+					/*@editable*/ font-size:20px !important;
 					/*@editable*/ line-height:100% !important;
 				}
 
@@ -413,7 +417,7 @@ if (!empty($logo)) {
 				* @tip Make the second-level headings larger in size for better readability on small screens.
 				*/
 				h2{
-					/*@editable*/ font-size:20px !important;
+					/*@editable*/ font-size:18px !important;
 					/*@editable*/ line-height:100% !important;
 				}
 
@@ -423,7 +427,7 @@ if (!empty($logo)) {
 				* @tip Make the third-level headings larger in size for better readability on small screens.
 				*/
 				h3{
-					/*@editable*/ font-size:18px !important;
+					/*@editable*/ font-size:16px !important;
 					/*@editable*/ line-height:100% !important;
 				}
 
@@ -433,7 +437,7 @@ if (!empty($logo)) {
 				* @tip Make the fourth-level headings larger in size for better readability on small screens.
 				*/
 				h4{
-					/*@editable*/ font-size:16px !important;
+					/*@editable*/ font-size:14px !important;
 					/*@editable*/ line-height:100% !important;
 				}
 
@@ -458,7 +462,7 @@ if (!empty($logo)) {
 				* @tip Make the header content text larger in size for better readability on small screens. We recommend a font size of at least 16px.
 				*/
 				.headerContent{
-					/*@editable*/ font-size:20px !important;
+					/*@editable*/ font-size:16px !important;
 					/*@editable*/ line-height:125% !important;
 				}
 
@@ -481,7 +485,7 @@ if (!empty($logo)) {
 				* @tip Make the body content text larger in size for better readability on small screens. We recommend a font size of at least 16px.
 				*/
 				.bodyContent{
-					/*@editable*/ font-size:18px !important;
+					/*@editable*/ font-size:14px !important;
 					/*@editable*/ line-height:125% !important;
 				}
 
@@ -493,7 +497,7 @@ if (!empty($logo)) {
 				* @tip Make the body content text larger in size for better readability on small screens.
 				*/
 				.footerContent{
-					/*@editable*/ font-size:14px !important;
+					/*@editable*/ font-size:12px !important;
 					/*@editable*/ line-height:115% !important;
 				}
 
@@ -553,10 +557,10 @@ if (!empty($logo)) {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td valign="top" class="footerContent companyName">
+                                            <td valign="bottom" class="footerContent companyName">
                                                 <?php echo $this->fetch('company'); ?>
                                             </td>
-                                            <td valign="top" class="footerContent socialLinks">
+                                            <td valign="bottom" class="footerContent socialLinks">
                                                 <?php echo $this->fetch('facebookLink'); ?>
                                                 <?php echo $this->fetch('twitterLink'); ?>
                                             </td>
