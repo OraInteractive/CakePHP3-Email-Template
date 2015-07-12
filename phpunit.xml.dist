@@ -1,0 +1,13 @@
+<phpunit
+	colors="true"
+	processIsolation="false"
+	stopOnFailure="false"
+	syntaxCheck="false"
+	bootstrap="./tests/bootstrap.php">
+
+	<testsuites>
+		<testsuite name="Ora Email Test Cases">
+			<directory>./tests/</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
