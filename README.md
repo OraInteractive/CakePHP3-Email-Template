@@ -7,13 +7,13 @@
 
 ## About
 
-Email Template for CakePHP3 is based on [HTML Email Layouts by MailChimp](https://github.com/mailchimp/Email-Blueprints) and [Gourmet/Email](https://github.com/gourmet/email).
+Email Template for [CakePHP 3] is based on [HTML Email Layouts by MailChimp][MC Blueprints] and [Gourmet/Email][Gourmet/Email].
 
-Specifically, using a modified version of the [Base Boxed Basic Query](https://github.com/mailchimp/email-blueprints/blob/master/responsive-templates/base_boxed_basic_query.html) resposive template.
+Specifically, using a modified version of the [Base Boxed Basic Query][template] resposive template.
 
 ##Installation
 
-The recommended installation way is through [Composer](https://getcomposer.org).
+The recommended installation way is through [Composer].
 
 ```
 $ composer require orainteractive/cakephp3-email-template
@@ -69,7 +69,7 @@ The following properties can be used to modify the HTML prior to sending:
 | inline   | false   | Inlines CSS                   |
 ```
 
-Inline CSS uses [tijsverkoyen/css-to-inline-styles](https://github.com/tijsverkoyen/CssToInlineStyles)
+Inline CSS uses [tijsverkoyen/CssToInlineStyles]
 
 The following properties can be used in the template configuration:
 
@@ -104,6 +104,10 @@ $email->to($user->email)
 
 Copyright (c) 2015, Ora Interactive and licensed under [The MIT License][mit].
 
+[MC Blueprints]:https://github.com/mailchimp/Email-Blueprints
 [CakePHP 3]:http://cakephp.org
 [Composer]:http://getcomposer.org
+[tijsverkoyen/CssToInlineStyles]:https://github.com/tijsverkoyen/CssToInlineStyles
+[Gourmet/Email]:https://github.com/gourmet/email
+[template]:https://github.com/mailchimp/email-blueprints/blob/master/responsive-templates/base_boxed_basic_query.html
 [mit]:http://www.opensource.org/licenses/mit-license.php
