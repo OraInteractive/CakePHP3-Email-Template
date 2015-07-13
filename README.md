@@ -60,7 +60,7 @@ Update your email configuration in `config/app.php`, example shows `default` con
 
 ## Documentation
 
-The following properties can be used to modify the HTML prior to sending:
+The following ``modifier`` properties can be used to modify the HTML prior to sending:
 
 | Property | Default | Description                   |
 | -------- | ------- | ------------                  |
@@ -69,7 +69,7 @@ The following properties can be used to modify the HTML prior to sending:
 
 Inline CSS uses [tijsverkoyen/CssToInlineStyles]
 
-The following properties can be used in the template configuration:
+The following ``template`` properties can be used in the template configuration:
 
 | Property        | Default | Description                                   |
 | --------------- | ------- | --------------------------------------------- |
