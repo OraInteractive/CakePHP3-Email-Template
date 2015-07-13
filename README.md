@@ -68,11 +68,11 @@ Update your email configuration in `config/app.php`, example shows `default` con
 
 The following ``modifier`` properties can be used to modify the HTML prior to sending:
 
-| Property   | Default                                                           | Description                             |
-| ---------- | ----------------------------------------------------------------- | --------------------------------------- |
-| clean      | false                                                             | Performs a clean on HTML based on RegEx |
-| regEx      | ['/<!--(.|\s)*?-->/' => '','!/\*[^*]*\*+([^/][^*]*\*+)*/!' => ''] | RegEx(s) for used for clean             |
-| inline     | false                                                             | Inlines CSS                             |
+| Property   | Default                                                                 | Description                             |
+| ---------- | ----------------------------------------------------------------------- | --------------------------------------- |
+| clean      | false                                                                   | Performs a clean on HTML based on RegEx |
+| regEx      | ```['/<!--(.|\s)*?-->/' => '','!/\*[^*]*\*+([^/][^*]*\*+)*/!' => '']``` | RegEx(s) for used for clean             |
+| inline     | false                                                                   | Inlines CSS                             |
 
 Inline CSS uses [tijsverkoyen/CssToInlineStyles]
 
