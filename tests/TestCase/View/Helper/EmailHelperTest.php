@@ -11,25 +11,7 @@ use \DOMDocument;
 use Ora\Email\View\Helper\EmailHelper;
 
 class TestEmailHelper extends EmailHelper
-{
-    public $_defaultConfig = [
-        'modifiers' => [
-            'inline' => true,
-            'clean' => true,
-        ],
-        'template' => [
-            'backgroundColor' => '#AAAAAA',
-            'defaultColor' => '#BBBBBB',
-            'fontColor' => '#CCCCCC',
-            'foregroundColor' => '#DDDDDD',
-            'company' => 'Example LLC',
-            'logo' => 'http://example.com/logo.png',
-            'homeLink' => 'http://example.com',
-            'facebookLink' => 'http://facebook.com/example',
-            'twitterLink' => 'http://twitter.com/example',
-        ],
-    ];
-    
+{    
     public function setType($type)
     {
         $this->_emailType = $type;
@@ -53,7 +35,23 @@ class EmailHelperTest extends TestCase
         parent::setUp();
         $controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
         $this->View = $this->getMock('Cake\View\View', array('append'));
-        $this->Email = new TestEmailHelper($this->View);
+        $this->Email = new TestEmailHelper($this->View, [
+            'modifiers' => [
+                'inline' => true,
+                'clean' => true,
+            ],
+            'template' => [
+                'backgroundColor' => '#AAAAAA',
+                'defaultColor' => '#BBBBBB',
+                'fontColor' => '#CCCCCC',
+                'foregroundColor' => '#DDDDDD',
+                'company' => 'Example LLC',
+                'logo' => 'http://example.com/logo.png',
+                'homeLink' => 'http://example.com',
+                'facebookLink' => 'http://facebook.com/example',
+                'twitterLink' => 'http://twitter.com/example',
+            ],
+        ]);
         $this->Email->request = new Request();
         $this->Email->request->webroot = '';
 
@@ -105,17 +103,17 @@ class EmailHelperTest extends TestCase
     public function testAfterLayout()
     {
         $event = $this->getMock('Cake\Event\Event', [], [$this->View]);
-        $html = '<html><head><style type="text/css">/*Testing*/p{font-size:20px;}</style></head><body><!--Comment--><p>Hello</p></body></html>';
+        $html = '<style type="text/css">/*Testing*/p{font-size:20px;}</style><!--Comment--><p>Hello</p>';
         $htmlInlineClean = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><head><style type="text/css">p{font-size:20px;}</style></head><body><p style="font-size: 20px;">Hello</p></body></html>
 ';
-        
+
         $viewFile = '/path/to/app/Template/Email/text/welcome.ctp';
         $this->Email->setType('text');
         $this->Email->setContent($html);
         $this->Email->afterLayout($event, $viewFile);
         $this->assertEquals($html, $this->Email->getBlock('content'));
-        
+
         $viewFile = '/path/to/app/Template/Email/html/welcome.ctp';
         $this->Email->setType('html');
         $this->Email->setContent($html);
@@ -125,7 +123,7 @@ class EmailHelperTest extends TestCase
     
     public function testInline()
     {
-        $html = '<html><head><style type="text/css">p{font-size:20px;}</style></head><body><p>Hello</p></body></html>';
+        $html = '<style type="text/css">p{font-size:20px;}</style><p>Hello</p>';
         $htmlInline = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><head><style type="text/css">p{font-size:20px;}</style></head><body><p style="font-size: 20px;">Hello</p></body></html>
 ';
@@ -137,7 +135,6 @@ class EmailHelperTest extends TestCase
     {
         $html = '/* CSS Comment */Success<!-- HTML Comment -->';
         $htmlClean = 'Success';
-
         $this->assertEquals($htmlClean, $this->Email->clean($html, []));
     }
     

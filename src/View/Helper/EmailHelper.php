@@ -2,6 +2,7 @@
 namespace Ora\Email\View\Helper;
 
 use Cake\Event\Event;
+use Cake\Utility\Hash;
 use Cake\View\Helper;
 use Cake\View\View;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
@@ -17,6 +18,12 @@ class EmailHelper extends Helper
         'modifiers' => [
             'inline' => false,
             'clean' => false,
+        ],
+        'regEx' => [
+            '' => [
+                '/<!--(.|\s)*?-->/',
+                '!/\*[^*]*\*+([^/][^*]*\*+)*/!',
+            ],
         ],
         'template' => [
             'backgroundColor' => '#FFFFFF',
@@ -98,7 +105,7 @@ class EmailHelper extends Helper
             
             foreach ($this->_config['modifiers'] as $modifier => $config) {
                 if ($config && in_array($modifier, ['inline', 'clean'])) {
-                    $content = call_user_func_array([$this, $modifier], [$content, $config]);
+                    $content = call_user_func_array([$this, $modifier], [$content]);
                 }
             }
 
@@ -120,10 +127,9 @@ class EmailHelper extends Helper
      * Inlines CSS from style elements.
      *
      * @param string $content Html with CSS in style elements
-     * @param array|bool $config Configuration for inline
      * @return string Html with inlined CSS attributes
      */
-    public function inline($content, $config)
+    public function inline($content)
     {
         $html = new CssToInlineStyles();
         $html->setHtml($content);
@@ -133,20 +139,20 @@ class EmailHelper extends Helper
     }
     
     /**
-     * Cleans html of comments.
+     * Cleans Html with RegEx(s).
      *
-     * @param string $content Html with comments
-     * @param array|bool $config Configuration for clean
-     * @return string Html without comments
+     * @param string $content Html
+     * @return string Html cleaned
      */
-    public function clean($content, $config)
+    public function clean($content)
     {
-        $htmlRegex = !empty($config['htmlRegex']) ? $config['htmlRegex'] : '/<!--(.|\s)*?-->/';
-        $content = preg_replace($htmlRegex, '', $content);
-        
-        $cssRegex = !empty($config['cssRegex']) ? $config['cssRegex'] : '!/\*[^*]*\*+([^/][^*]*\*+)*/!';
-        $content = preg_replace($cssRegex, '', $content);
-        
+        $regExs = $this->_config['regEx'];
+        if (is_array($regExs)) {
+            foreach ($regExs as $replacement => $regEx) {
+                $content = preg_replace($regEx, $replacement, $content);
+            }
+        }
+
         return $content;
     }
     
