@@ -22,7 +22,7 @@ $ composer require orainteractive/cakephp3-email-template
 Load the plugin in `config/bootstrap.php`:
 
 ```php
-    Plugin::load('Ora/Email');
+Plugin::load('Ora/Email');
 ```
 
 Update your email configuration in `config/app.php`, example shows `default` configuration:
