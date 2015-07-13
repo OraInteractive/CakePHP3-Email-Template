@@ -62,18 +62,15 @@ Update your email configuration in `config/app.php`, example shows `default` con
 
 The following properties can be used to modify the HTML prior to sending:
 
-```
 | Property | Default | Description                   |
 | -------- | ------- | ------------                  |
 | clean    | false   | Removes HTML and CSS comments |
 | inline   | false   | Inlines CSS                   |
-```
 
 Inline CSS uses [tijsverkoyen/CssToInlineStyles]
 
 The following properties can be used in the template configuration:
 
-```
 | Property        | Default | Description                                   |
 | --------------- | ------- | --------------------------------------------- |
 | backgroundColor | #FFFFFF | Background color for email                    |
@@ -84,7 +81,6 @@ The following properties can be used in the template configuration:
 | homeLink        |         | URL of app homepage                           |
 | logo            |         | Full path URL for logo                        |
 | twitterLink     |         | Twitter URL for app                           |
-```
 
 ## Usage
 
